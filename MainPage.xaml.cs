@@ -1,23 +1,25 @@
-﻿namespace S32K1SimBoard;
+﻿using Microsoft.Maui.Controls;
+using System.IO;
+
+namespace S32K1SimBoard;
 
 public partial class MainPage : ContentPage
 {
-	int count = 0;
+    public MainPage()
+    {
+        InitializeComponent();
+        LoadHtmlFromRaw();
+    }
 
-	public MainPage()
-	{
-		InitializeComponent();
-	}
+    private async void LoadHtmlFromRaw()
+    {
+        using var stream = await FileSystem.OpenAppPackageFileAsync("index.html");
+        using var reader = new StreamReader(stream);
+        string html = reader.ReadToEnd();
 
-	private void OnCounterClicked(object? sender, EventArgs e)
-	{
-		count++;
-
-		if (count == 1)
-			CounterBtn.Text = $"Clicked {count} time";
-		else
-			CounterBtn.Text = $"Clicked {count} times";
-
-		SemanticScreenReader.Announce(CounterBtn.Text);
-	}
+        MyWebView.Source = new HtmlWebViewSource
+        {
+            Html = html
+        };
+    }
 }

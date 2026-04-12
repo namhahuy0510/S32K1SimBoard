@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>S32K1SimBoard Simulator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Header bar -->
+  <header class="navbar">
+    <h1>S32K1SimBoard</h1>
+    <nav>
+      <label for="mcu">MCU:</label>
+      <select id="mcu">
+        <option value="s32k144">NXP S32K144xx</option>
+        <option value="s32k146">NXP S32K146xx</option>
+      </select>
+
+      <label for="register">Register Type:</label>
+      <select id="register">
+        <option value="clock">Clock</option>
+        <option value="gpio">GPIO</option>
+        <option value="uart">UART</option>
+      </select>
+
+      <label for="device">Peripheral Device:</label>
+      <select id="device">
+        <option value="hc-sr04">HC-SR04 Ultrasonic</option>
+        <option value="lcd">LCD Display</option>
+      </select>
+    </nav>
+  </header>
+
+  <!-- Tab bar -->
+  <div class="tabbar">
+    <button class="tab active" onclick="showTab('simulator')">Simulator</button>
+    <button class="tab" onclick="showTab('script')">Script C</button>
+  </div>
+
+  <!-- Main content -->
+  <main>
+    <!-- Simulator tab -->
+    <div id="simulator" class="tabcontent active">
+      <h2>Simulator Panel</h2>
+      <div class="device-area">
+        <!-- Ảnh PNG thiết bị HC-SR04 -->
+        <img id="hcImage" src="Image/HC-SR04.png" alt="HC-SR04 Sensor">
+        <!-- Ảnh PNG thiết bị LCD 16x2 -->
+        <img id="lcdImage" src="Image/LCD_16x2.png" alt="LCD 16x2 Display">
+      </div>
+      <div id="output">
+        <h2>Simulation Output</h2>
+        <p>Select options above to configure simulation.</p>
+      </div>
+    </div>
+
+    <!-- Script tab -->
+    <div id="script" class="tabcontent">
+      <div id="code">
+        <h2>Script C Editor</h2>
+        <textarea style="width:100%;height:200px;"></textarea>
+      </div>
+    </div>
+  </main>
+
+  <!-- JS -->
+  <script src="script.js"></script>
+</body>
+</html>

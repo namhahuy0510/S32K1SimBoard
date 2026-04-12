@@ -6,9 +6,9 @@
     xmlns:local="clr-namespace:S32K1SimBoard"
     Title="S32K1SimBoard">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
-
+    <TabBar>
+        <ShellContent
+            ContentTemplate="{DataTemplate local:MainPage}"
+            Route="MainPage" />
+    </TabBar>
 </Shell>
