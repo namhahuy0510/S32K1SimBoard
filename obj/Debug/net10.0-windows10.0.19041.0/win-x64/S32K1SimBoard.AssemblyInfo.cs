@@ -17,7 +17,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("S32K1SimBoard")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+3a427cebc445b003e5dcbbd100f2c0e7e441bd0f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+333932131d07746251b7faa6ecfd034da8bc1617")]
 [assembly: System.Reflection.AssemblyProductAttribute("S32K1SimBoard")]
 [assembly: System.Reflection.AssemblyTitleAttribute("S32K1SimBoard")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

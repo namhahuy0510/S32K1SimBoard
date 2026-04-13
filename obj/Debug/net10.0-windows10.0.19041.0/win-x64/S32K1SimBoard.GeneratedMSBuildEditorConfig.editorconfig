@@ -78,6 +78,16 @@ build_metadata.AdditionalFiles.NoWarn =
 build_metadata.AdditionalFiles.EnableDiagnostics = 
 build_metadata.AdditionalFiles.LineInfo = 
 
+[C:/Users/namha/Downloads/S32K1SimBoard/publish/wwwroot/style.css]
+build_metadata.AdditionalFiles.GenKind = Css
+build_metadata.AdditionalFiles.ManifestResourceName = S32K1SimBoard.publish.wwwroot.style.css
+build_metadata.AdditionalFiles.TargetPath = publish\wwwroot\style.css
+build_metadata.AdditionalFiles.RelativePath = publish\wwwroot\style.css
+build_metadata.AdditionalFiles.Inflator = 
+build_metadata.AdditionalFiles.NoWarn = 
+build_metadata.AdditionalFiles.EnableDiagnostics = 
+build_metadata.AdditionalFiles.LineInfo = 
+
 [C:/Users/namha/Downloads/S32K1SimBoard/Resources/Raw/wwwroot/style.css]
 build_metadata.AdditionalFiles.GenKind = Css
 build_metadata.AdditionalFiles.ManifestResourceName = S32K1SimBoard.Resources.Raw.wwwroot.style.css
