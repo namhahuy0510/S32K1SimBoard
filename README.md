@@ -21,31 +21,18 @@ Tải file `.zip` hoặc `.rar` tương ứng với phiên bản.
 ## 🚀 3. Chạy chương trình
 
 * Mở thư mục vừa giải nén
-* Vào thư mục:
-
-  ```
-  ```
-
-publish
-
-```
-- Tìm file:
-```
-
-S32K1SimBoard.exe
-
-```
-- Nhấp đúp để chạy chương trình
-
----
+* Vào thư mục `public`
+* Tìm file `S32K1SimBoard.exe`
+* Run (nhấp đúp để chạy chương trình)
 
 ## ⚠️ Lưu ý
-- Nếu Windows chặn, chọn **More info → Run anyway**
-- Không xóa các file trong thư mục `publish` vì chương trình cần chúng để chạy
-- Nên giữ nguyên cấu trúc thư mục sau khi giải nén
+
+* Nếu Windows chặn, chọn **More info → Run anyway**
+* Không xóa các file trong thư mục `publish` vì chương trình cần chúng để chạy
+* Nên giữ nguyên cấu trúc thư mục sau khi giải nén
 
 ---
 
 ## 📌 Ghi chú
+
 Nếu gặp lỗi khi chạy, hãy đảm bảo đã cài .NET Desktop Runtime tương ứng với phiên bản build.
-```
