@@ -56,8 +56,11 @@ splashSplashScreen.scale-125.png
 splashSplashScreen.scale-150.png
 splashSplashScreen.scale-200.png
 splashSplashScreen.scale-400.png
-Image\HC-SR04.png
-Image\LCD_16x2.png
-index.html
-script.js
-style.css
+wwwroot\Image\Battery_12VDC_8Ah.png
+wwwroot\Image\HC-SR04.png
+wwwroot\Image\LCD_16x2.png
+wwwroot\Image\LM2596.png
+wwwroot\Image\S32K144.png
+wwwroot\index.html
+wwwroot\script.js
+wwwroot\style.css

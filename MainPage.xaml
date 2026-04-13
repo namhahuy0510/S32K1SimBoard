@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="S32K1SimBoard.MainPage">
 
-    <WebView x:Name="MyWebView"
-             HorizontalOptions="FillAndExpand"
-             VerticalOptions="FillAndExpand" />
+            <HybridWebView x:Name="MyHybridView"
+               RawMessageReceived="OnRawMessageReceived"
+               HorizontalOptions="Fill"
+               VerticalOptions="Fill" />
 </ContentPage>

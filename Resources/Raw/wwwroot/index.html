@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S32K144 Simulator - Neumorphism</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+</head>
+
+<body>
+    <div id="status">Trạng thái: Sẵn sàng. (ESC để hủy)</div>
+
+    <div id="sidebar-list">
+        <h3>Thiết bị</h3>
+        
+        <div class="device-item" data-type="S32K144">
+            <div class="item-icon">
+                <img src="./Image/S32K144.png" alt="S32K144">
+            </div>
+            <span>NXP S32K144</span>
+        </div>
+
+        <div class="device-item" data-type="Battery">
+            <div class="item-icon">
+                <img src="./Image/Battery_12VDC_8Ah.png" alt="Battery">
+            </div>
+            <span>Battery 12V</span>
+        </div>
+
+        <div class="device-item" data-type="LM2596">
+            <div class="item-icon">
+                <img src="./Image/LM2596.png" alt="LM2596">
+            </div>
+            <span>Module LM2596</span>
+        </div>
+
+        <div class="device-item" data-type="HC-SR04">
+            <div class="item-icon">
+                <img src="./Image/HC-SR04.png" alt="HC-SR04">
+            </div>
+            <span>HC-SR04</span>
+        </div>
+
+        <div class="device-item" data-type="LCD">
+            <div class="item-icon">
+                <img src="./Image/LCD_16x2.png" alt="LCD">
+            </div>
+            <span>Màn hình LCD</span>
+        </div>
+    </div>
+
+    <div class="custom-dropdown" id="i2c-dropdown">
+        <div class="selected">Fast (400kbps)</div>
+        <ul class="dropdown-list">
+            <li data-value="100000">Standard (100kbps)</li>
+            <li data-value="400000">Fast (400kbps)</li>
+            <li data-value="1000000">High Speed (1Mbps)</li>
+        </ul>
+    </div>
+
+
+
+    <div id="sidebar-config">
+        <h3>Cấu hình S32K144</h3>
+        
+        <div class="config-section">
+            <p class="section-title">Hệ thống</p>
+            <div class="config-group">
+                <label for="cfg-clock">SOSC Clock (MHz)</label>
+                <input type="number" id="cfg-clock" value="80">
+            </div>
+            <div class="config-group">
+                <label for="cfg-bus">Bus Clock (MHz)</label>
+                <input type="number" id="cfg-bus" value="40">
+            </div>
+            <div class="config-group">
+                <label for="cfg-project">Project Name</label>
+                <input type="text" id="cfg-project" value="S32K144_Project">
+            </div>
+        </div>
+
+        <div class="config-section">
+            <p class="section-title">Thiết lập Ngoại vi</p>
+            
+            <div class="config-group">
+                <label for="cfg-i2c-speed">LPI2C Speed</label>
+                <div class="custom-dropdown" id="cfg-i2c-speed">
+                    <div class="selected">Fast (400kbps)</div>
+                    <ul class="dropdown-list">
+                        <li data-value="100000">Standard (100kbps)</li>
+                        <li data-value="400000">Fast (400kbps)</li>
+                        <li data-value="1000000">High Speed (1Mbps)</li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <div class="config-group">
+                <label for="cfg-sr04-mode">HC-SR04 Mode</label>
+                <div class="custom-dropdown" id="cfg-sr04-mode">
+                    <div class="selected">Interrupt (ICU)</div>
+                    <ul class="dropdown-list">
+                        <li data-value="polling">Polling</li>
+                        <li data-value="interrupt">Interrupt (ICU)</li>
+                    </ul>
+                </div>
+            </div>
+
+            
+    </div>
+        <div class="action-buttons">
+            <button id="generate-btn" class="btn-primary">GENERATE CODE C</button>
+            <button id="delete-btn" class="btn-danger">XÓA ĐỐI TƯỢNG</button>
+        </div>
+    </div>
+
+
+    <div id="canvas">
+        <svg id="svg-layer">
+            <polyline id="drawing-line" points=""></polyline>
+        </svg>
+
+        <div class="device" data-name="S32K144" style="width: 160px; height: 160px; top: 200px; left: 450px;">
+            <img src="./Image/S32K144.png" alt="S32K144">
+            <div class="dot" data-pin="PTA12" data-type="IN" style="left: -7px; top: 50px; background: #3d5afe;"></div>
+            <span class="pin-label" style="left: -45px; top: 50px;">PTA12</span>
+            
+            <div class="dot" data-pin="PTD15" data-type="IN" style="left: -7px; top: 100px; background: #3d5afe;"></div>
+            <span class="pin-label" style="left: -45px; top: 100px;">PTD15</span>
+            
+            <div class="dot" data-pin="PTB2" data-type="OUT" style="right: -7px; top: 75px; background: #27ae60;"></div>
+            <span class="pin-label" style="right: -40px; top: 75px;">PTB2</span>
+            
+            <div class="dot" data-pin="VCC" data-type="PWR" style="top: -7px; left: 50%; margin-left: -5px; background: #e74c3c;"></div>
+            <span class="pin-label" style="left: 50%; transform: translateX(-50%); top: -25px;">VCC</span>
+            
+            <div class="dot" data-pin="GND" data-type="GND" style="bottom: -7px; left: 50%; margin-left: -5px; background: #333;"></div>
+            <span class="pin-label" style="left: 50%; transform: translateX(-50%); bottom: -25px;">GND</span>
+        </div>
+
+        <div class="device" data-name="Battery" style="width: 90px; height: 120px; top: 420px; left: 100px;">
+            <img src="./Image/Battery_12VDC_8Ah.png" alt="Battery">
+            <div class="dot" data-pin="VCC +12V" data-type="PWR" style="right: -7px; top: 30px; background: #e74c3c;"></div>
+            <span class="pin-label" style="right: -40px; top: 30px;">+12V</span>
+
+            <div class="dot" data-pin="GND" data-type="GND" style="right: -7px; top: 85px; background: #333;"></div>
+            <span class="pin-label" style="right: -35px; top: 85px;">GND</span>
+        </div>
+
+        <div class="device" data-name="LM2596" style="width: 140px; height: 80px; top: 450px; left: 280px;">
+            <img src="./Image/LM2596.png" alt="LM2596">
+            <div class="dot" data-pin="IN+" data-type="PWR" style="left: -7px; top: 15px; background: #e74c3c;"></div>
+            <span class="pin-label" style="left: -30px; top: 15px;">IN+</span>
+
+            <div class="dot" data-pin="IN-" data-type="GND" style="left: -7px; top: 55px; background: #333;"></div>
+            <span class="pin-label" style="left: -30px; top: 55px;">IN-</span>
+
+            <div class="dot" data-pin="OUT+" data-type="PWR" style="right: -7px; top: 15px; background: #e74c3c;"></div>
+            <span class="pin-label" style="right: -40px; top: 15px;">OUT+</span>
+
+            <div class="dot" data-pin="OUT-" data-type="GND" style="right: -7px; top: 55px; background: #333;"></div>
+            <span class="pin-label" style="right: -40px; top: 55px;">OUT-</span>
+        </div>
+    </div>
+
+    <div id="code-modal">
+        <div class="modal-content">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h3 style="margin:0; color: #3d5afe;">Source Code Output</h3>
+                <span id="close-modal" style="cursor:pointer; font-size:28px;">&times;</span>
+            </div>
+            <hr style="border: 0; border-top: 1px solid #ddd; margin: 15px 0;">
+            <pre id="code-display"></pre>
+            <div style="display: flex; gap: 10px; margin-top: 20px;">
+                <button id="copy-btn">Copy to Clipboard</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
